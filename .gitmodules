@@ -1,0 +1,6 @@
+[submodule "web/Leaflet.markercluster"]
+	path = web/Leaflet.markercluster
+	url = https://github.com/Leaflet/Leaflet.markercluster.git
+[submodule "web/heatcanvas"]
+	path = web/heatcanvas
+	url = https://github.com/sunng87/heatcanvas.git
