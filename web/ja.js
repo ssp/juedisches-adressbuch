@@ -25,13 +25,13 @@ jQuery(function () {
 				});
 			}
 		});
-
+		
 		var heatmapLayer = new L.TileLayer.HeatCanvas({}, {
 			'step':0.5,
 			'degree':HeatCanvas.LINEAR,
 			'opacity':0.7
 		});
-	
+		
 		for (var dataIndex in data) {
 			var boebbelData = data[dataIndex];
 			var lat = parseFloat(boebbelData[1]);
@@ -41,10 +41,19 @@ jQuery(function () {
 			}
 			
 			var boebbel = L.marker([lat, lon], {title: boebbelData[3]});
-			boebbel.bindPopup(popupContent(boebbelData));
+
+			boebbel.on('click', function (event) {
+				var target = event.target;
+				target.off('click');
+				if (!target.getPopup()) {
+					target.bindPopup(popupContent(boebbelData));
+				}
+				target.togglePopup();
+			}); 
+			//boebbel.bindPopup(popupContent(boebbelData));
 			markerLayer.addLayer(boebbel);
 			
-			heatmapLayer.pushData(lat, lon, 1);
+			//heatmapLayer.pushData(lat, lon, 1);
 		}
 	
 		// map.addLayer(heatmapLayer);
