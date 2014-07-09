@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+#
+# Volltextseiten für Seiten 119-556 von der ZLB nach volltext/*.html laden.
+#
+curl "http://digital.zlb.de/viewer/!fulltext/1931001_1931/[119-556]/" -o "volltext/#1.html" 2> download.log

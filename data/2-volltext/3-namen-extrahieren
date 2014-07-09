@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+#
+# In volltext/*.html.text ersten Tag entfernen
+# und Text bis zum zweiten Komma nach volltext/*.html.text.name extrahieren.
+#
+find volltext -name "*.text" -print0\
+| xargs -0 -I GAGA sh -c '\
+	cat GAGA\
+	| sed -e "s/^[^>]*>//" -e "s/^\([^,]*,[^,]*\).*/\1/"\
+	> GAGA.name'

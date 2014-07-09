@@ -21,8 +21,14 @@ nach [data/0-adressen.csv](data/0-adressen.csv) geladen
 * Visualisierung auf OpenStreetMap Karte mit [Leaflet](http://leafletjs.com/)
 * Zoomabhängige Clusterung der Böbbel durch [Leaflet.markercluster](https://github.com/Leaflet/Leaflet.markercluster): Das Laden der Seite ist wegen der mehr als 60000 Böbbel nicht wirklich schnell, funktioniert erstaunlicherweise danach aber ziemlich gut
 
+### Verbindung mit Adressbuchseite
+* Skripte im Ordner [data/2-volltext](data/2-volltext).
+* Die Daten dafür sind momentan nicht in der [zugehörigen METS Datei](http://digital.zlb.de/viewer/metsresolver?id=1931001_1931) zu finden.
+* Laden und extrahieren die Namen aus den Volltexten der ZLB und versuchen eine eindeutige Zuordnung zu finden (6 kurze Shellbefehle mit Standardtools).
+* Es klappt für etwa 50% der Einträge. Probleme sind einerseits mehrfach auftauchende Namen, andererseits Werbung oben auf der Seite, durch die der extrahierte Text kein Name ist.
+* Zuordnung in der Datei [data/2-volltext/id-name-seite.tsv](data/2-volltext/id-name-seite.tsv), zusammengeführt mit den Originaldaten bei [Google Spreadsheets](https://docs.google.com/spreadsheets/d/1oSrX8P-LLkrnJij5JyjiXsoMC5JiLGIyLgzTobowh6c/edit?usp=sharing) (im Blatt `seite-erster` müssen die `#N/A` Felder in der Spalte `erste ID` ausgefüllt werden).
+
 ## Ideen
-* Verlinkung auf Seite im Digitalisat der Adressbuchs: momentan sind die dafür nötigen Daten nicht in der [METS Datei]() zu finden
 * Suchschlitz zum Filtern der angezeigten Böbbel nach Name und Adresse
 * Abgleich mit Wikidata: Wieviele Personen mit den vorhandenen Namen finden wir? Wie gut läßt sich feststellen, ob es die richtigen sind? Damit ließen sich für die gefundenen Personen weitere Querverweise realisieren.
 * Anzahl: Wie verhält sich die Anzahl der Adressbucheinträge zur Anzahl der Menschen? Nur ein Eintrag pro Familie?

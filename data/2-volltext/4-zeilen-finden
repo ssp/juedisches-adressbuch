@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+#
+# Zeilen mit dem Namen in volltext/*.html.text.name in der Original CSV Datei finden
+# und nach volltext/*.html.text.name.matches speichern.
+#
+find volltext -name "*.name" -print0\
+| xargs -0 -I GAGA sh -c '\
+	grep "`cat GAGA`" ../0-adressen.csv\
+	> GAGA.matches'

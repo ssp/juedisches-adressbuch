@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+#
+# Tag mit Volltextinhalt aus den Dateien volltext/*.html
+# nach volltext/*.html.text extrahieren.
+#
+rm volltexte-extrahieren.log
+find volltext -name "*html" -print0\
+| xargs -0 -I GAGA sh -c '\
+	cat GAGA\
+	|xmllint --html --xpath "//div[@id=\"fulltextBox\"]" -\
+	> GAGA.text 2>>volltexte-extrahieren.log'\

@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+#
+# Anzahl der Treffer pro Name ermitteln und in trefferzahlen speichern.
+#
+find volltext -name "*matches" -print0\
+| xargs -0 wc -l\
+> trefferzahlen
