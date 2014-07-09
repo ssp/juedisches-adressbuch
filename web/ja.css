@@ -101,3 +101,16 @@
 leaflet-popup-content p {
 	margin: 0;
 }
+
+#filter {
+}
+
+#filter input {
+	width: 250px;
+	border-radius: 7px;
+	font-size: 125%;
+}
+
+#filter .filterNote {
+	color: #666;
+}
