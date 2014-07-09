@@ -29,8 +29,12 @@ nach [data/0-adressen.csv](data/0-adressen.csv) geladen
 * Zuordnung in der Datei [data/2-volltext/id-name-seite.tsv](data/2-volltext/id-name-seite.tsv), zusammengeführt mit den Originaldaten bei [Google Spreadsheets](https://docs.google.com/spreadsheets/d/1oSrX8P-LLkrnJij5JyjiXsoMC5JiLGIyLgzTobowh6c/edit?usp=sharing) (im Blatt `seite-erster` müssen die `#N/A` Felder in der Spalte `erste ID` ausgefüllt werden).
 * Zuordnung zu Seitengenauen URNs und der angezeigten Seitennummer in liste-tabelle.tsv, auch vorhanden im Blatt `seite-urn` des Google Spreadsheet.
 
+### Suche
+* Im Suchschlitz kann nach Namen und Straßennamen gesucht werden.
+* Gibt es weniger als 1000 Treffer, werden nur diese angezeigt.
+* Eine Suche nach Stadtteil- oder Straßennamen, deckt etliche Geocodingfehler auf. (Komischerweise scheint mein lokales Nominatim schlechtere Ergebnisse zu liefern als das bei OpenStreetmap im Internet)
+
 ## Ideen
-* Suchschlitz zum Filtern der angezeigten Böbbel nach Name und Adresse
 * Abgleich mit Wikidata: Wieviele Personen mit den vorhandenen Namen finden wir? Wie gut läßt sich feststellen, ob es die richtigen sind? Damit ließen sich für die gefundenen Personen weitere Querverweise realisieren.
 * Anzahl: Wie verhält sich die Anzahl der Adressbucheinträge zur Anzahl der Menschen? Nur ein Eintrag pro Familie?
 * Zeitgemäße Karten: läßt sich eine Karte aus der Zeit, z.B. aus dem Bestand der [Alt Berlin Site](http://www.alt-berlin.info/cgi/stp/lana.pl?nr=21&gr=5) oder den [Stadtplan 1938](http://steffen.in-berlin.de) einbinden? Technische Schwierigkeiten? Sind das offene Daten?
