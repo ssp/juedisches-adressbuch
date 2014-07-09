@@ -1,0 +1,22 @@
+#!/usr/bin/env sh
+#
+# aus METS extrahieren:
+# * URNs -> liste-urns
+# * Seitennummern -> liste-seiten
+# * Seitennummern für Anzeige -> liste-seiten-anzeige
+# und Tabelle aus zusammengehörigen Zeilen erzeugen.
+#
+xmllint --xpath "//*[local-name()='div' and @TYPE='page' and @ORDER]/@CONTENTIDS" adressbuch.mets\
+| sed -e 's/ *CONTENTIDS="//g' -e 's/" */\n/g'\
+> liste-urns
+
+xmllint --xpath "//*[local-name()='div' and @TYPE='page' and @ORDER]/@ORDER" adressbuch.mets\
+| sed -e 's/ *ORDER="//g' -e 's/" */\n/g'\
+> liste-seiten
+
+xmllint --xpath "//*[local-name()='div' and @TYPE='page' and @ORDER]/@ORDERLABEL" adressbuch.mets\
+| sed -e 's/ *ORDERLABEL="//g' -e 's/" */\n/g'\
+> liste-seiten-anzeige
+
+echo "Seite\tSeite-Anzeige\turn" > liste-tabelle.tsv
+paste liste-seiten liste-seiten-anzeige liste-urns >> liste-tabelle.tsv

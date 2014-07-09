@@ -27,12 +27,13 @@ nach [data/0-adressen.csv](data/0-adressen.csv) geladen
 * Laden und extrahieren die Namen aus den Volltexten der ZLB und versuchen eine eindeutige Zuordnung zu finden (6 kurze Shellbefehle mit Standardtools).
 * Es klappt für etwa 50% der Einträge. Probleme sind einerseits mehrfach auftauchende Namen, andererseits Werbung oben auf der Seite, durch die der extrahierte Text kein Name ist.
 * Zuordnung in der Datei [data/2-volltext/id-name-seite.tsv](data/2-volltext/id-name-seite.tsv), zusammengeführt mit den Originaldaten bei [Google Spreadsheets](https://docs.google.com/spreadsheets/d/1oSrX8P-LLkrnJij5JyjiXsoMC5JiLGIyLgzTobowh6c/edit?usp=sharing) (im Blatt `seite-erster` müssen die `#N/A` Felder in der Spalte `erste ID` ausgefüllt werden).
+* Zuordnung zu Seitengenauen URNs und der angezeigten Seitennummer in liste-tabelle.tsv, auch vorhanden im Blatt `seite-urn` des Google Spreadsheet.
 
 ## Ideen
 * Suchschlitz zum Filtern der angezeigten Böbbel nach Name und Adresse
 * Abgleich mit Wikidata: Wieviele Personen mit den vorhandenen Namen finden wir? Wie gut läßt sich feststellen, ob es die richtigen sind? Damit ließen sich für die gefundenen Personen weitere Querverweise realisieren.
 * Anzahl: Wie verhält sich die Anzahl der Adressbucheinträge zur Anzahl der Menschen? Nur ein Eintrag pro Familie?
-* Zeitgemäße Karten: läßt sich eine Karte aus der Zeit, z.B. aus dem Bestand der [Alt Berlin Site](http://www.alt-berlin.info/cgi/stp/lana.pl?nr=21&gr=5) einbinden? Technische Schwierigkeiten? Sind das offene Daten?
+* Zeitgemäße Karten: läßt sich eine Karte aus der Zeit, z.B. aus dem Bestand der [Alt Berlin Site](http://www.alt-berlin.info/cgi/stp/lana.pl?nr=21&gr=5) oder den [Stadtplan 1938](http://steffen.in-berlin.de) einbinden? Technische Schwierigkeiten? Sind das offene Daten?
 * Weitere Daten zu den Personen: Was wissen wir über ihr Schicksal? Was wurde im Rahmen von [Stolperstadt](http://www.stolperstadt.org/deutsch/) schon festgestellt?
 * Heatmap ([Screenshot 1](screenshots/heatmap1.png), [Screenshot 2](screenshots/heatmap2.png)): bringt nicht wirklich neue Information und ist mit (dieser) browserseitigen Bibliothek ziemlich langsam
 

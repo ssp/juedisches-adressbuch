@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+#
+# METS Datei von der ZLB laden und “schön” formatieren.
+#
+curl "http://digital.zlb.de/viewer/metsresolver?id=1931001_1931"\
+| xmllint --format -\
+> adressbuch.mets
