@@ -3,6 +3,18 @@
 	width: 600px;	
 }
 
+#note {
+	position: absolute;
+	top: 45%;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 2em;
+	text-align: center;
+	font-size: 300%;
+	z-index: 10000;
+}
+
 .marker-cluster {
 	background-clip: padding-box;
 	border-radius: 20px;

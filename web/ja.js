@@ -1,12 +1,16 @@
 jQuery(function () {
 	var map = L.map('map').setView([52.5, 13.4], 11);
-
+	
 	L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 	    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 	}).addTo(map);
-
-
+	
+	
+	jQuery('#note').text('Daten laden …');
+	
 	jQuery.getJSON('koordinaten.json', function (data) {
+		jQuery('#note').text('Daten aufbereiten …');
+		
 		var log10 = Math.log(10);
 		var markerLayer = new L.MarkerClusterGroup({
 			maxClusterRadius: 50,
@@ -44,6 +48,7 @@ jQuery(function () {
 		}
 	
 		// map.addLayer(heatmapLayer);
+		jQuery('#note').hide();
 		map.addLayer(markerLayer);
 	});
 
