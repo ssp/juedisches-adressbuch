@@ -1,33 +1,27 @@
 #!/usr/bin/env python
 
+import cache
 import csvutf8
 import os
 import urllib
 import urllib2
 import json
-import pprint
+import time
 
-nominatimBaseURL = 'http://ubuntu.local/nominatim/search.php?';
+nominatimBaseURL = 'http://ubuntu.local/nominatim/search.php?'
+sleepInterval = 0
+#nominatimBaseURL = 'http://nominatim.openstreetmap.org/search.php?'
+#sleepInterval = 1
+
 results = [['id', 'lat', 'lon']]
 browserResults = []
 
-# read existing cache
+# cache
 cachePath = '/../cache.json'
-addressCache = {}
-
-cacheRowIndexes = {'id':0, 'lat':1, 'lon':2, 'json':3}
-cachePath = os.path.normpath(__file__ + cachePath)
-if os.path.exists(cachePath):
-	cacheFile = open(cachePath)
-	try:
-		addressCache = json.load(cacheFile)
-	except:
-		addressCache = {}
-	cacheFile.close()
+addressCache = cache.Cache(cachePath)
 
 
-
-# looking up coordinates
+# look up coordinates
 def bestCoordinate (coordinateInfos):
 	best = None
 	for index, coordinateInfo in enumerate(coordinateInfos):
@@ -39,7 +33,10 @@ def bestCoordinate (coordinateInfos):
 
 
 def coordinatesForAddress (address):
-	if not addressCache.has_key(address):
+	global sleepInterval
+	
+	if not addressCache.getItem(address):
+		time.sleep(sleepInterval)
 		URL = nominatimBaseURL + urllib.urlencode({'format':'json', 'q':address.encode('utf-8')})
 		coordinateDownload = urllib2.urlopen(URL)
 		jsonText = coordinateDownload.read()
@@ -49,9 +46,9 @@ def coordinatesForAddress (address):
 		if best and best.has_key('lat') and best.has_key('lon'):
 			cacheDict['lat'] = best['lat']
 			cacheDict['lon'] = best['lon']
-		addressCache[address] = cacheDict
+		addressCache.setItem(address, cacheDict)
 
-	return addressCache[address]
+	return addressCache.getItem(address)
 
 
 personIndexes = {'nr': 0, 'id':2, 'surname':3, 'firstname':4, 'street':6, 'bezirk':7, 'job':8, 'extras':9, 'remarks':10}
@@ -85,8 +82,6 @@ def processPerson (person):
 
 
 
-
-
 # read and process person list
 addressReader = csvutf8.UnicodeReader(open(os.path.normpath(__file__ + '/../../0-adressen.csv')), delimiter='\t')
 addressReader.next()
@@ -106,6 +101,4 @@ json.dump(browserResults, jsonFile)
 jsonFile.close()	
 
 # write cache JSON
-cacheFile = open(cachePath, 'w')
-json.dump(addressCache, cacheFile, indent=2, separators=(',', ': '), sort_keys=True)
-cacheFile.close()
+addressCache.write()
