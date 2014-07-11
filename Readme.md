@@ -34,8 +34,15 @@ nach [data/0-adressen.csv](data/0-adressen.csv) geladen
 * Gibt es weniger als 1000 Treffer, werden nur diese angezeigt.
 * Eine Suche nach Stadtteil- oder Straßennamen, deckt etliche Geocodingfehler auf. (Komischerweise scheint mein lokales Nominatim schlechtere Ergebnisse zu liefern als das bei OpenStreetmap im Internet)
 
+### Wikidata
+* Skripte im Ordner [data/3-wikidata](data/3-wikidata).
+* Suchen aller Namen bei Wikidata; gecached in [wikidataSearchCache.json](data/3-wikidata/wikidataSearchCache.json)
+* Laden der gefundenen Wikidata Items; gecached in [wikidataIDCache.json](data/3-wikidata/wikidataIDCache.json) (große Datei!)
+* erste Analyse von Namensübereinstimmung, passenden Lebensdaten und passendem Typ in [wikidataResults.csv](data/3-wikidata/wikidataResults.csv)
+* Erster Eindruck: eine zuverlässige Zuordnung der Wikidata ID ist nicht automatisch möglich; mit diesen Vorarbeiten könnte sie aber einfacher werden. Die große Anzahl der Ergebnisse läßt die Aufgabe schlimmer aussehen als sie ist, da viele Zeilen wegen mehrfach auftretender Namen entstehen oder vom falschen Typ sind.
+
+
 ## Ideen
-* Abgleich mit Wikidata: Wieviele Personen mit den vorhandenen Namen finden wir? Wie gut läßt sich feststellen, ob es die richtigen sind? Damit ließen sich für die gefundenen Personen weitere Querverweise realisieren.
 * Anzahl: Wie verhält sich die Anzahl der Adressbucheinträge zur Anzahl der Menschen? Nur ein Eintrag pro Familie?
 * Zeitgemäße Karten: läßt sich eine Karte aus der Zeit, z.B. aus dem Bestand der [Alt Berlin Site](http://www.alt-berlin.info/cgi/stp/lana.pl?nr=21&gr=5) oder den [Stadtplan 1938](http://steffen.in-berlin.de) einbinden? Technische Schwierigkeiten? Sind das offene Daten?
 * Weitere Daten zu den Personen: Was wissen wir über ihr Schicksal? Was wurde im Rahmen von [Stolperstadt](http://www.stolperstadt.org/deutsch/) schon festgestellt?
